@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- For mobile responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Your Crypto Wallet</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Register Your Crypto Wallet</h1>
+    </header>
+
+    <main>
+      <form id="walletForm">
+        <label for="username">Reddit Username (auto-filled):</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Loading..."
+        />
+
+        <label for="address">Crypto Wallet Address:</label>
+        <input
+          type="text"
+          id="address"
+          placeholder="Enter 0x... wallet address"
+          required
+        />
+
+        <button type="submit">Submit</button>
+      </form>
+      <div id="statusMsg"></div>
+
+          <!-- Ledger Section for Registered Users -->
+          <section id="ledger">
+            <h2>Registered Users Ledger</h2>
+            <ul id="ledgerList"></ul>
+          </section>
+        </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

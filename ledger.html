@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Ledger</title>
+  </head>
+  <body>
+    <h1>Registered Wallets</h1>
+    <ul id="ledgerList"></ul>
+
+    <script type="module">
+      import { reddit } from '@devvit/public-api/reddit';
+
+      const pinnedPostId = 't3_1ivxmxn'; // The same pinned post ID
+
+      async function loadLedger() {
+        try {
+          const pinnedPost = await reddit.getPostById({ id: pinnedPostId });
+          const ledgerData = JSON.parse(pinnedPost.selftext || '[]');
+
+          const ledgerList = document.getElementById('ledgerList');
+          ledgerList.innerHTML = ''; // Clear existing
+          ledgerData.forEach((entry) => {
+            const li = document.createElement('li');
+            li.textContent = `${entry.username} → ${entry.address}`;
+            ledgerList.appendChild(li);
+          });
+        } catch (err) {
+          console.error('Error loading ledger:', err);
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', loadLedger);
+    </script>
+  </body>
+</html>
