@@ -1,67 +1,80 @@
-This app is liscensed under GNU General Public License v3.0
+## Registration Project
 
-Below is the main feature of the subreddit, r/bbw_dapp **Registration** project. It includes:
-
-- Instructions for installation and usage
-- A note about branching for new features
-- A reference to Devvit’s Quickstart documentation
-
----
-
-```markdown
-# Registration Project
-
-This project provides a user registration and management system. It includes:
-- **User sign-up** with basic information
-- **Email verification** and password reset flow
-- **Administrative dashboard** for managing registered users
+This project provides a user crypto registration and management system within your Reddit community. It includes:
+- User sign-up autofilled with basic information (Reddit username)
+- Crypto address verification
 
 ## Table of Contents
 
 - [Getting Started](#getting-started)
 - [Features](#features)
-- [Branching Strategy](#branching-strategy)
+- [GitHub Branching Strategy](#github-branching-strategy)
 - [Reference](#reference)
 - [License](#license)
 
 ## Getting Started
 
-1. **Clone the repository:**
+### Prerequisites
+Before you start, you'll need:
+- **Node.js (v22.2.0+)**
+- **A test subreddit that you moderate** (with less than 200 members)
+  - After creating a test subreddit, visit your Safety Filters under mod tools and turn off the Reputation filter.
+- **A code editor** (Reddit recommends VS Code)
+
+### Installation and Setup
+
+1. **Install the Devvit CLI:**  
+   Choose your preferred package manager:
+   ```bash
+   npm install -g devvit
+   ```
+2. **Log in to Reddit:**
+   ```bash
+   devvit login
+   ```
+3. **Create a New Project:**
+   ```bash
+   devvit new --template blocks-post
+   cd my-project
+   ```
+   **Pro Tip:** If you're already a savvy web developer, use `--template web-view-post` to leverage webview component features.
+
+4. **Clone the Repository:**
    ```bash
    git clone https://github.com/BadBxarWrld/r-bbw_dapp-reddit.git
    ```
-2. **Install dependencies:**
+5. **Upload Your App:**
    ```bash
-   cd registration-project
-   npm install
+   devvit upload
    ```
-3. **Run the development server:**
+6. **Playtest Your App:**  
+   Replace `<my-subreddit>` with your test subreddit name (e.g., `r/MyTestSub`).
    ```bash
-   npm start
-   ```
-4. **Open the application in your browser:**
-   ```
-   http://localhost:3000
+   devvit playtest <my-subreddit>
    ```
 
 ## Features
 
-- **Registration Form** – Allows new users to sign up with username, email, and password.
-- **Email Verification** – Sends a verification link to the user’s email.
-- **User Dashboard** – Displays user profile details and account settings.
-- **Admin Panel** – Provides an overview of all registered users and site analytics.
+- **Registration Form** – Allows any user to participate in earning rewards with their username and crypto address.
+  - **Crypto Address Verification:** If a user registers again, their previous wallet will be overwritten in the ledger post's comments while preserving history. (Addresses must be in 0x... format.)
+  - **Username:Crypto Address Ledger:** Maintains a record of all participants via the ledger post and comments.
+- **Mod-Only: Create Ledger Post Button:**  
+  Provides a button for mods to create a ledger post for registrations.  
+  - **Non-Mods:** Receive a toast notification informing them they are not allowed.
+  - **Mods:** Receive a toast notification confirming the post has been created. (Refresh the screen to view the new post.)
 
-## Branching Strategy
+## GitHub Branching Strategy
 
 [TheAverageNewishCoder](https://github.com/TheAverageNewishCoder) follows a simple branching model:
-1. **main** – The primary subreddit feature (Crypto Registration)
-2. **additional subreddit feature** – Each new feature that is added to the subreddit, r/BBW_Dapp is developed on a separate branch.  
-   For example, if you’re adding a new subreddit feature, create a branch named `feature/subreddit` and work there.
+1. **main:** The primary branch for the Crypto Registration feature.
+2. **additional subreddit feature:** For any new subreddit features, create a branch named `feature/subreddit` and develop there.
 
-When a feature is complete, DO NOT open a pull request to merge the changes back into `main`. Unless it's directly relevant to the Crypto Registration feature. All other requests may be ignored.
+**Note:** When a feature is complete, DO NOT open a pull request to merge changes back into `main` unless the feature directly relates to Crypto Registration. All other requests may be ignored.
 
 ## Reference
 
-For more details on integrating with Devvit or building advanced Reddit-based features, check out [Devvit’s Quickstart documentation](https://developers.reddit.com/docs/0.9/quickstart). This guide will help you set up your environment and streamline your development process when adding new subreddit-related features.
+For more details on integrating with Devvit or building advanced Reddit-based features, check out [Devvit’s Quickstart documentation](https://developers.reddit.com/docs/quickstart).
 
-```
+## License
+
+This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).
